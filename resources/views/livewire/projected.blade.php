@@ -223,12 +223,12 @@
             <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
                 <div>
                     <div class="mt-1 text-center sm:mt-1">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title-2">
-                            <label for="set-title">
-                                {{$fieldName}} for ({{$fieldMonthName}}) <br>
-                                <input id="set-title" name="title" type="text" wire:model.defer="rowName" class="form-input px-2 py-2 rounded-md w-10/12" />
-                            </label>
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-2" id="modal-title-2">
+                            {{$rowName}} for ({{$fieldMonthName}})
                         </h3>
+                        <label for="set-title">
+                            <input id="set-title" name="title" type="text" wire:model.defer="rowName" class="form-input px-2 py-2 rounded-md w-10/12" />
+                        </label>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">
                                 Set value for all months (<span>{!!$rowTypeHTML!!}</span>)<br>

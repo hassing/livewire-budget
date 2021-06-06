@@ -225,22 +225,24 @@ class Projected extends Component
         }
     }
 
-    public function updateRow() {
+    public function updateRow(): void
+    {
         $post = \App\Models\Post::whereHas('category', function ($query) {
             return $query->where('user_id', \Auth::user()->id);
         })->where("id", $this->rowPostID)->first();
 
+        # edit name
         if ($post->name !== $this->rowName) {
             $post->update(['name' => $this->rowName]);
             $post->save();
         }
 
         $value = null;
-        if($this->rowValue != null && trim($this->rowValue) != "" && is_numeric(trim($this->rowValue))) {
-            $value = floatval($this->rowValue);
+        if($this->rowValue !== null && trim($this->rowValue) !== "" && is_numeric(trim($this->rowValue))) {
+            $value = (float)$this->rowValue;
         }
 
-        if($post != null && $value !== null) {
+        if($post !== null && $value !== null) {
             for($m=1;$m<=12;$m++) {
                 $post->setMonthValue($m, $value);
             }
