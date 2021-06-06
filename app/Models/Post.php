@@ -10,6 +10,7 @@ class Post extends Model
     use HasFactory;
     private $monthValueCache = null;
     private $monthActualValueCache = null;
+    protected $guarded = [];
 
     public function category() {
         return $this->belongsTo(\App\Models\Category::class);

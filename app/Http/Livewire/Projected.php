@@ -217,10 +217,10 @@ class Projected extends Component
         })->where("id", $id)->first();
 
         if($post) {
-            $this->rowPostID = $post->id;
-            $this->rowName = $post->name;
-            $this->rowTypeHTML = "<span class=\"".($post->is_expense ? "col-neg" : "col-pos")."\">".($post->is_expense ? "expense" : "income")."</span>";
-            $this->modalRowUpdate = true;
+            $this->rowPostID        = $post->id;
+            $this->rowName          = $post->name;
+            $this->rowTypeHTML      = "<span class=\"".($post->is_expense ? "col-neg" : "col-pos")."\">".($post->is_expense ? "expense" : "income")."</span>";
+            $this->modalRowUpdate   = true;
             $this->emit("focusField", "rowValue");
         }
     }
@@ -229,6 +229,11 @@ class Projected extends Component
         $post = \App\Models\Post::whereHas('category', function ($query) {
             return $query->where('user_id', \Auth::user()->id);
         })->where("id", $this->rowPostID)->first();
+
+        if ($post->name !== $this->rowName) {
+            $post->update(['name' => $this->rowName]);
+            $post->save();
+        }
 
         $value = null;
         if($this->rowValue != null && trim($this->rowValue) != "" && is_numeric(trim($this->rowValue))) {
