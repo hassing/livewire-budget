@@ -19,7 +19,7 @@
 			<ul class="pt-4">
 				<li><a href="/login">Login</a></li>
 				<li><a href="/register">Register</a></li>
-				<li><a href="https://github.com/hassing/livewire-buget">Source code</a></li>
+				<li><a href="https://github.com/hassing/livewire-budget">Source code</a></li>
 			</ul>
 		</div>
 	</div>
