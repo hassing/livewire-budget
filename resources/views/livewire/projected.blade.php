@@ -224,7 +224,7 @@
                 <div>
                     <div class="mt-1 text-center sm:mt-1">
                         <h3 class="text-lg leading-6 font-medium text-gray-900 mb-2" id="modal-title-2">
-                            {{$rowName}} for ({{$fieldMonthName}})
+                            {{$rowName}}
                         </h3>
                         <label for="set-title">
                             <input id="set-title" name="title" type="text" wire:model.defer="rowName" class="form-input px-2 py-2 rounded-md w-10/12" />
