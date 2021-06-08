@@ -1,4 +1,4 @@
-<div x-data="{ modalRowUpdate: @entangle('modalRowUpdate'), modalFieldUpdate: @entangle('modalFieldUpdate'), modalColumnUpdate: @entangle('modalColumnUpdate'), modalDelete: @entangle('modalDelete') }">
+<div wire:keydown.escape="closeAllModals" x-data="{ modalRowUpdate: @entangle('modalRowUpdate'), modalFieldUpdate: @entangle('modalFieldUpdate'), modalColumnUpdate: @entangle('modalColumnUpdate'), modalDelete: @entangle('modalDelete') }">
     <div class="text-center" >
         <input wire:keydown.enter="createPost" wire:model.defer="createName" name="createName" type="text" class="form-input px-2 py-2 rounded-md w-4/12" placeholder="Name ...">
         
@@ -184,7 +184,7 @@
 
     <div class="fixed z-10 inset-0 overflow-y-auto" style="display:none" aria-labelledby="modal-title-1" role="dialog" aria-modal="true" x-show="modalFieldUpdate">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <div wire:click="closeFieldUpdate" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
@@ -216,7 +216,7 @@
 
     <div class="fixed z-10 inset-0 overflow-y-auto" style="display:none" aria-labelledby="modal-title-2" role="dialog" aria-modal="true" x-show="modalRowUpdate">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <div wire:click="closeRowUpdate" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         
@@ -227,7 +227,7 @@
                             {{$rowName}}
                         </h3>
                         <label for="set-title">
-                            <input id="set-title" name="title" type="text" wire:model.defer="rowName" class="form-input px-2 py-2 rounded-md w-10/12" />
+                            <input wire:keydown.enter="updateRow" id="set-title" name="title" type="text" wire:model.defer="rowName" class="form-input px-2 py-2 rounded-md w-10/12" />
                         </label>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">
@@ -254,7 +254,7 @@
 
     <div class="fixed z-10 inset-0 overflow-y-auto" style="display:none" aria-labelledby="modal-title-3" role="dialog" aria-modal="true" x-show="modalColumnUpdate">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <div wire:click="closeColumnUpdate" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         
@@ -285,7 +285,7 @@
 
     <div class="fixed z-10 inset-0 overflow-y-auto" style="display:none" aria-labelledby="modal-title-4" role="dialog" aria-modal="true" x-show="modalDelete">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <div wire:click="closeDelete" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         
@@ -321,7 +321,6 @@
                     $("input[name="+inputName+"]")[0].select();
                     $("input[name="+inputName+"]")[0].focus();
                 }, 100);
-
             });
         });
     </script>

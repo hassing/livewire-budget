@@ -300,4 +300,11 @@ class Projected extends Component
         }
         $this->emitTo('actual', '$refresh');
     }
+
+    public function closeAllModals() {
+        $this->modalRowUpdate = false;
+        $this->modalFieldUpdate = false;
+        $this->modalColumnUpdate = false;
+        $this->modalDelete = false;
+    }
 }

@@ -266,4 +266,10 @@ class Actual extends Component
             $this->switchDifferenceCSS = "bg-blue-700";
         }
     }
+
+    public function closeAllModals() {
+        $this->modalFieldUpdate = false;
+        $this->modalColumnUpdate = false;
+        $this->modalDelete = false;
+    }
 }
