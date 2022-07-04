@@ -11,7 +11,9 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.4"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "livewire/livewire": "^2.4",
+        "spatie/laravel-backup": "^6.16"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
